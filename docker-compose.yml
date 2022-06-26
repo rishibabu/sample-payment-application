@@ -1,0 +1,10 @@
+version: "3"
+services:
+  external-processor-api:
+    image: adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine
+    volumes:
+      - './:/payment-processing-gateway'
+    working_dir: '/payment-processing-gateway'
+    command: sh -c "./gradlew external-processor-api:startMock"
+    ports:
+      - "8500:8500"
